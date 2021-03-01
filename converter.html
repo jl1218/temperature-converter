@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Temperature Converter Widget</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+body {
+	background-color: #def;
+	padding: 0;
+	margin: 0;
+}
+body * {
+	font-family: "nunito", sans-serif;
+}
+div {
+	height: 300px;
+	width: 80vw;
+	background-color: white;
+	margin: auto;
+	position: relative;
+	top: 150px;
+	border-radius: 20px;
+	box-shadow: 3px 3px grey;
+}
+input {
+	height: 35px;
+	font-size: 18px;
+	width: 16vw;
+	border-radius: 8px;
+	border: 1.5px solid #aaa;
+	position: absolute;
+	padding-left: 5px;
+}
+h1 {
+	position: absolute;
+	text-align: center;
+	width: 90vw;
+	top: 40px;
+	left: 5vw;
+}
+select {
+	height: 40px;
+	width: 16vw;
+	font-size: 15px;
+	border-radius: 8px;
+	border: 1.5px solid #aaa;
+	position: absolute;
+}
+label {
+	display: block;
+	margin: 10px 0 10px 0;
+	position: absolute;
+}
+label[for*="degrees"] {
+	top: 10px;
+	left: 4vw;
+}
+input#degrees {
+	top: 50px;
+	left: 4vw;
+}
+label[for*="type"] {
+	left: 25vw;
+	top: 10px;
+}
+select#type {
+	left: 25vw;
+	top: 50px;
+}
+button {
+	height: 40px;
+	width: 20vw;
+	position: absolute;
+	top: 50px;
+	background: #2196f3;
+	border-radius: 5px;
+	border: none;
+	left: 50vw;
+}
+h2 {
+	position: absolute;
+	top: 100px;
+	left: 4vw;
+}
+p {
+	position: absolute;
+	top: 150px;
+	left: 4vw;
+}
+</style>
+</head>
+<body translate="no" >
+  <h1>Temperature Converter</h1>
+  <div id="converter">
+	  <label for="degrees">Degrees</label>
+	  <input type="number" id="degrees">
+	  <label for="type">Type</label>
+	  <select id="type">
+		  <option value="fahrenheit">Fahrenheit</option>
+		  <option value="celsius">Celsius</option>
+		  <option value="kelvin">Kelvin</option>
+	  </select>
+	  <button id="convert" onclick="convert()">Convert</button>
+	  <h2>result:</h2>
+	  <p id="result"></p>
+  </div>
+  <script id="rendered-js" >
+    function convert() {
+	    var degrees = document.getElementById("degrees").value;
+      if (document.getElementById("type").value == "fahrenheit") {
+		    document.getElementById("result").innerHTML = `${(degrees - 32) / 1.8}°C<br>${(degrees - 32) / 1.8 + 273.15}°K`;
+	    } else if (document.getElementById("type").value == "celsius") {
+		    document.getElementById("result").innerHTML = `${degrees * 1.8 + 32}°F<br>${parseFloat(degrees) + 273.15}°K`;
+	    } else if (document.getElementById("type").value == "kelvin") {
+      document.getElementById("result").innerHTML = `${(degrees - 273.15) * 1.8 + 32}°F<br>${parseFloat(degrees) - 273.15}°C`;
+	    }
+    }
+  </script>
+</body>
+</html>
+ 
